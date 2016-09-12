@@ -61,6 +61,12 @@
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <DocumentationFile>bin\Release\net20\Priority Queue.xml</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\PriorityQueue.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -77,6 +83,9 @@
     <Compile Include="SimplePriorityQueue.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\PriorityQueue.snk">
+      <Link>PriorityQueue.snk</Link>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

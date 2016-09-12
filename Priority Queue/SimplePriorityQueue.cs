@@ -140,7 +140,7 @@ namespace Priority_Queue
         /// Duplicates are allowed.
         /// O(log n)
         /// </summary>
-        public void Enqueue(T item, float priority)
+        public void Enqueue(T item, double priority)
         {
             lock(_queue)
             {
@@ -182,7 +182,7 @@ namespace Priority_Queue
         /// to update all of them, please wrap your items in a wrapper class so they can be distinguished).
         /// O(n)
         /// </summary>
-        public void UpdatePriority(T item, float priority)
+        public void UpdatePriority(T item, double priority)
         {
             lock (_queue)
             {
