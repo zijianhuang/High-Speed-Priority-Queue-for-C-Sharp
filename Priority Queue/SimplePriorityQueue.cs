@@ -122,15 +122,61 @@ namespace Priority_Queue
         /// </summary>
         public T Dequeue()
         {
-            lock(_queue)
+            lock (_queue)
             {
-                if(_queue.Count <= 0)
+                if (_queue.Count <= 0)
                 {
                     throw new InvalidOperationException("Cannot call Dequeue() on an empty queue");
                 }
 
-                SimpleNode node =_queue.Dequeue();
+                SimpleNode node = _queue.Dequeue();
                 return node.Data;
+            }
+        }
+
+        public bool TryDequeue(out T result)//test later
+        {
+            lock (_queue)
+            {
+                if (_queue.Count <= 0)
+                {
+                    result = default(T);
+                    return false;
+                }
+
+                SimpleNode node = _queue.Dequeue();
+                result = node.Data;
+                return true;
+            }
+        }
+
+        public T Peek()
+        {
+            lock (_queue)
+            {
+                if (_queue.Count <= 0)
+                {
+                    throw new InvalidOperationException("Cannot call Dequeue() on an empty queue");
+                }
+
+                SimpleNode node = _queue.Peek();
+                return node.Data;
+            }
+        }
+
+        public bool TryPeek(out T result)
+        {
+            lock (_queue)
+            {
+                if (_queue.Count <= 0)
+                {
+                    result = default(T);
+                    return false;
+                }
+
+                SimpleNode node = _queue.Peek();
+                result = node.Data;
+                return true;
             }
         }
 

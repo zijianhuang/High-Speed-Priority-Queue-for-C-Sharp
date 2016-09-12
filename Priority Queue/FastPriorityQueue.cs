@@ -237,22 +237,47 @@ namespace Priority_Queue
         /// </summary>
         public T Dequeue()
         {
-            #if DEBUG
-            if(_numNodes <= 0)
+#if DEBUG
+            if (_numNodes <= 0)
             {
                 throw new InvalidOperationException("Cannot call Dequeue() on an empty queue");
             }
 
-            if(!IsValidQueue())
+            if (!IsValidQueue())
             {
                 throw new InvalidOperationException("Queue has been corrupted (Did you update a node priority manually instead of calling UpdatePriority()?" +
                                                     "Or add the same node to two different queues?)");
             }
-            #endif
+#endif
 
             T returnMe = _nodes[1];
             Remove(returnMe);
             return returnMe;
+        }
+
+        public bool TryDequeue(out T result)//todo: test later
+        {
+            result = _nodes[1];
+            var ok = result != default(T);
+            if (ok)
+            {
+                Remove(result);
+            }
+            return ok;
+        }
+
+        public T Peek()
+        {
+            T returnMe = _nodes[1];
+            return returnMe;
+        }
+
+        public bool TryPeek(out T result)//todo: test later
+        {
+            T returnMe = _nodes[1];
+            result= returnMe;
+
+            return result != default(T);
         }
 
         /// <summary>

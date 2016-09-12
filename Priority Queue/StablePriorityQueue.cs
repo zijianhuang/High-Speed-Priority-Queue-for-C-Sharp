@@ -260,6 +260,31 @@ namespace Priority_Queue
             return returnMe;
         }
 
+        public bool TryDequeue(out T result)//todo: test later
+        {
+            result = _nodes[1];
+            var ok = result != default(T);
+            if (ok)
+            {
+                Remove(result);
+            }
+            return ok;
+        }
+
+        public T Peek()
+        {
+            T returnMe = _nodes[1];
+            return returnMe;
+        }
+
+        public bool TryPeek(out T result)//todo: test later
+        {
+            T returnMe = _nodes[1];
+            result = returnMe;
+
+            return result != default(T);
+        }
+
         /// <summary>
         /// Resize the queue so it can accept more nodes.  All currently enqueued nodes are remain.
         /// Attempting to decrease the queue size to a size too small to hold the existing nodes results in undefined behavior

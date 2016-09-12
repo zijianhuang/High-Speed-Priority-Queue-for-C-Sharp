@@ -37,6 +37,13 @@ namespace Priority_Queue_Tests
             return returnMe;
         }
 
+        protected Node Peek()
+        {
+            Node returnMe = Queue.Peek();
+            Assert.IsTrue(IsValidQueue());
+            return returnMe;
+        }
+
         [SetUp]
         public void SetUp()
         {
@@ -116,6 +123,38 @@ namespace Priority_Queue_Tests
             Assert.AreEqual(node3, Dequeue());
             Assert.AreEqual(node4, Dequeue());
             Assert.AreEqual(node5, Dequeue());
+        }
+
+        [Test]
+        public void TestSimpleQueueWithPeek()
+        {
+            Node node1 = new Node(1);
+            Node node2 = new Node(2);
+            Node node3 = new Node(3);
+            Node node4 = new Node(4);
+            Node node5 = new Node(5);
+
+            Enqueue(node2);
+            Enqueue(node5);
+            Enqueue(node1);
+            Enqueue(node3);
+            Enqueue(node4);
+
+            Node n = null;
+            Assert.AreEqual(node1, Dequeue());
+            Assert.AreEqual(node2, Peek());
+            Assert.AreEqual(node2, Dequeue());
+            Assert.AreEqual(node3, Dequeue());
+            Assert.IsTrue(Queue.TryPeek(out n));
+            Assert.IsNotNull(n);
+            Assert.IsTrue(Queue.TryDequeue(out n));
+            Assert.AreEqual(node4, n);
+            Assert.AreEqual(node5, Dequeue());
+
+            Assert.IsFalse(Queue.TryPeek(out n));
+            Assert.IsNull(n);
+            Assert.IsFalse(Queue.TryDequeue(out n));
+            Assert.IsNull(n);
         }
 
         [Test]

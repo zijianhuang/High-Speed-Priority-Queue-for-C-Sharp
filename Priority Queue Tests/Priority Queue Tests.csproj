@@ -62,9 +62,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Priority Queue\Priority Queue.csproj">
+    <ProjectReference Include="..\Priority Queue\PriorityQueue.csproj">
       <Project>{1531c1ea-bd53-41d1-a34b-cfcdf79d2651}</Project>
-      <Name>Priority Queue</Name>
+      <Name>PriorityQueue</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -20,6 +20,13 @@ namespace Priority_Queue
         /// </summary>
         T Dequeue();
 
+
+        T Peek();
+
+        bool TryPeek(out T result);
+
+        bool TryDequeue(out T result);
+
         /// <summary>
         /// Removes every node from the queue.
         /// </summary>
